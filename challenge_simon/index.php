@@ -35,7 +35,8 @@ if (!$conn) {
 if (isset($_POST["submit"])) {
 $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
 $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
-$email = mysqli_real_escape_string($conn, $_POST['email']);$sql = "INSERT INTO Users (firstname, lastname, email) VALUES ('$firstname', '$lastname', '$email')";
+$email = mysqli_real_escape_string($conn, $_POST['email']);
+$sql = "INSERT INTO Users (firstname, lastname, email) VALUES ('$firstname', '$lastname', '$email')";
 if (mysqli_query($conn, $sql)) {
    echo "<h1>New record created.</h1>";
 } else {

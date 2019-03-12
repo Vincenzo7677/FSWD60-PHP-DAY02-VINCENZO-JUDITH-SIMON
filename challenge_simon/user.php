@@ -118,10 +118,17 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
 // fetch the next row (as long as there are any) into $row
 
 foreach ($rows as $val) {
-	echo "<tr><td>".$val["user_id"] . "</td><td>" .$val["lastname"] ."</td><td>" .$val["firstname"] ."</td><td>" .$val["email"] ."</td><td>" .$val["reg_date"] ."</td><td> <button>Edit</button></td><td><button>Delete</button></td></tr>";
+	echo "<tr><td>".$val["user_id"] . "</td><td>" .$val["lastname"] ."</td><td>" .$val["firstname"] ."</td><td>" .$val["email"] ."</td><td>" .$val["reg_date"] ."</td><td> <a class='btn btn-danger' href='user.php?id=".$val["user_id"]."'>delete</a></td><td><button>edit</button></td></tr>";
 }
 
-mysqli_close($conn);
+if(isset($_GET["id"])){
+	$id= $_GET["id"];
+	$sql = "DELETE FROM Users WHERE user_id = $id";
+	mysqli_query($conn, $sql);
+
+}
+
+//mysqli_close($conn);
 ?>
   	</tbody>
   </table>
@@ -131,4 +138,4 @@ mysqli_close($conn);
 
 
 </body>
-</html>
+</html
